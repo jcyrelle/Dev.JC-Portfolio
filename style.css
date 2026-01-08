@@ -5,6 +5,13 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 :root {
   --bg-main: #f2f2f2;
   --bg-card: #fafafa;
@@ -19,12 +26,18 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
 }
 
 /* Header */
 header {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   background: rgba(245, 245, 245, 0.95);
   border-bottom: 1px solid var(--border-soft);
@@ -35,6 +48,7 @@ header {
   padding: 15px 40px;
   z-index: 1000;
   transition: all 0.3s ease;
+  margin: 0;
 }
 
 header.scrolled {
@@ -112,8 +126,9 @@ nav a:hover {
 /* Sections */
 .section {
   padding: 100px 40px;
-  max-width: 1000px;
-  margin: auto;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -367,8 +382,8 @@ h2 {
 
 .work-card {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: stretch;
+  gap: 0;
   border: 1px solid #eee;
   border-radius: 12px;
   overflow: hidden;
@@ -383,10 +398,14 @@ h2 {
 }
 
 .work-image {
-  flex: 0 0 220px;
-  height: 160px;
+  flex: 0 0 350px;
+  min-height: 100%;
   overflow: hidden;
   position: relative;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .work-image::after {
@@ -410,13 +429,14 @@ h2 {
 .work-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.4s ease;
   display: block;
 }
 
 .work-card:hover .work-image img {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 .work-content {
@@ -617,6 +637,8 @@ button:active {
   color: #fff;
   text-align: center;
   padding: 40px 20px 20px;
+  width: 100%;
+  margin: 0;
 }
 
 .footer-top h3 {
@@ -697,6 +719,10 @@ button:active {
   .about-image img {
     width: 220px;
     height: 280px;
+  }
+
+  .work-image {
+    flex: 0 0 300px;
   }
 }
 
@@ -823,7 +849,7 @@ button:active {
     font-size: 0.9rem;
   }
 
-  /* Works - CRITICAL FIX: Stack vertically */
+  /* Works - Stack vertically */
   .works-grid {
     gap: 25px;
   }
@@ -836,7 +862,8 @@ button:active {
   .work-image {
     flex: 0 0 auto;
     width: 100%;
-    height: 200px;
+    height: 250px;
+    min-height: 250px;
   }
 
   .work-content {
@@ -974,7 +1001,8 @@ button:active {
   }
 
   .work-image {
-    height: 180px;
+    height: 200px;
+    min-height: 200px;
   }
 
   .work-content {
